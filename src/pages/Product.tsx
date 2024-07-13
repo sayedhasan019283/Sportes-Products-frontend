@@ -9,9 +9,8 @@ import {
 import ProductCard from "./ProductCard";
 import { useLocation } from "react-router-dom";
 import { IProduct } from "../Types/TProduct";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useAppSelector } from "../redux/hooks";
+
+// import { useAppSelector } from "../redux/hooks";
 
 const Product = () => {
   const [Result, setResult] = useState([]);
@@ -23,11 +22,12 @@ const Product = () => {
     brand: "",
   });
 // i cant show this conditional rendering
-  const {products : navFilterProducts} = useAppSelector((state) => state.products);
-  console.log('Nav navFilterProducts', navFilterProducts)
+  // const {products : navFilterProducts} = useAppSelector((state) => state.products);
+  // console.log('Nav navFilterProducts', navFilterProducts)
 
   const location = useLocation();
   const searchTerm = location.state?.searchTerm;
+  console.log(searchTerm)
 
   const { data: SearchData } = useGetProductsBySearchTermQuery(searchTerm);
   const SearchProducts = SearchData?.data;
@@ -56,7 +56,7 @@ const Product = () => {
     setResult(result?.data);
     // Close the modal after submission
     setIsOpen(false);
-    toast.success("successfully filtered data");
+    // toast.success("successfully filtered data");
     setTimeout(() => {}, 2000);
     // window.location.href = "/product/all-product";
     // console.log(result?.data);
@@ -72,10 +72,10 @@ const Product = () => {
     //   minPrice: "",
     //   brand: "",
     // });
-    window.location.href = "/";
+    window.location.href = "/product/all-product";
   };
 
-  console.log("filter res",FilterResult)
+  // console.log("filter res",FilterResult)
   if (isLoading) return <p>Loading...</p>;
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 relative">
@@ -212,7 +212,6 @@ const Product = () => {
           ))}
         </div>
       )}
-      <ToastContainer />
     </div>
   );
 };

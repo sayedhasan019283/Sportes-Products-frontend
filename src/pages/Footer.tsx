@@ -1,10 +1,12 @@
+import { NavLink } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="footer bg-base-200 text-base-content p-10">
       <nav>
         <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
+        <NavLink to="/about-us" className="link link-hover">About us</NavLink>
+        <NavLink to='/contact-us' className="link link-hover">Contact</NavLink>
         <a className="link link-hover">Jobs</a>
         <a className="link link-hover">Press kit</a>
       </nav>

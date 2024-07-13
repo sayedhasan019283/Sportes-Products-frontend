@@ -6,6 +6,8 @@ const productApi = baseApi.injectEndpoints({
         query: (searchTerm) => ({
           url: searchTerm ? `/products/products?searchTerm=${searchTerm}` : '/products/products',
           method: 'GET',
+          // Add pollingInterval for every 30 seconds re fatching 
+          pollingInterval: 30000,
         }),
       }),
         getOneProductById: builder.query({

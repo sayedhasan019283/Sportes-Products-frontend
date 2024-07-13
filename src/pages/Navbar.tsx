@@ -22,7 +22,10 @@ const Navbar = () => {
   };
   // console.log("cart products", products);
 
- 
+  const isAnyProductInStock = products.some(
+    (product) => product.stockQuantity > 0
+  );
+
   // console.log( 'search product',data);
   useEffect(() => {
     if (data) {
@@ -82,7 +85,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex navbar-end">
-        <div>
+      <div className="hidden sm:block">
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -162,9 +165,14 @@ const Navbar = () => {
               <span className="text-red-500">
                 The total price including 15%
               </span>
-              <span className="text-info">Subtotal: ${total}</span>
+              <span className="text-info">Subtotal: ${total.toFixed(1)}</span>
               <div className="card-actions">
-                <NavLink to="/checkout" className="btn btn-neutral btn-block">
+                <NavLink
+                  to={isAnyProductInStock ? "/checkout" : "#"}
+                  className={`btn btn-block ${
+                    isAnyProductInStock ? "btn-neutral" : "btn-disabled"
+                  }`}
+                >
                   Proceed to Checkout
                 </NavLink>
               </div>
