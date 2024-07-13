@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element:<SingleProductpage/>
       },
       {
-        path:'/about-as',
+        path:'/about-us',
         element:<About/>
       },
       {
