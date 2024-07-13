@@ -6,7 +6,7 @@ const About = () => {
       <div className="flex flex-col lg:flex-row bg-base-100 w-full shadow-xl">
         <div className="w-full lg:w-1/2">
           <img
-            src="/public/images/about.jpeg"
+            src="/images/about.jpeg"
             alt="contactus"
             className="w-full"
           />
